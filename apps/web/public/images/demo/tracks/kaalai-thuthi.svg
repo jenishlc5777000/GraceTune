@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(330 45% 22% / 1)"/><stop offset="1" stop-color="hsl(350 60% 70% / 1)"/></linearGradient><linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(340 50% 45% / 1)"/><stop offset="1" stop-color="hsl(320 55% 15% / 1)"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/>
+        <circle cx="418.2" cy="138.8" r="34" fill="hsl(0 90% 90% / 1)" opacity="0.9"/>
+        <path d="M0,600 L0,246.3 L100,311.1 L200,232.2 L300,217.8 L400,284.4 L500,328.9 L600,361.8 L600,600 Z" fill="hsl(320 25% 55% / 1)"/>
+        <path d="M0,600 L0,315.9 L75,283.4 L150,375.8 L225,297.5 L300,298.4 L375,268.9 L450,320 L525,314.6 L600,348.3 L600,600 Z" fill="hsl(315 30% 35% / 1)"/>
+        <path d="M0,600 L0,402.1 L66.7,347.2 L133.3,378 L200,411 L266.7,376.4 L333.3,409.2 L400,349.5 L466.7,381.9 L533.3,384.9 L600,401 L600,600 Z" fill="hsl(310 35% 20% / 1)"/>
+        <rect y="400" width="600" height="200" fill="url(#lake)"/>
+        <rect x="228.7" y="430" width="215" height="2" fill="#fff" opacity="0.3"/><rect x="146.6" y="448" width="139.3" height="2" fill="#fff" opacity="0.2"/><rect x="307.2" y="466" width="213.1" height="2" fill="#fff" opacity="0.2"/><rect x="342" y="484" width="155.7" height="2" fill="#fff" opacity="0.2"/><rect x="226.4" y="502" width="101.5" height="2" fill="#fff" opacity="0.2"/><rect x="161.5" y="520" width="181.4" height="2" fill="#fff" opacity="0.2"/><rect x="136.1" y="538" width="76.1" height="2" fill="#fff" opacity="0.2"/><rect x="89.3" y="556" width="145.8" height="2" fill="#fff" opacity="0.2"/><rect x="341.6" y="574" width="205.1" height="2" fill="#fff" opacity="0.3"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="496" font-size="56" font-weight="600">Kaalai Thuthi</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">KIRUBAI COLLECTIVE</text>
+</svg>

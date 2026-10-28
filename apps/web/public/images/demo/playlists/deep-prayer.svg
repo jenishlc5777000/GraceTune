@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(270 35% 8% / 1)"/><stop offset="1" stop-color="hsl(250 40% 4% / 1)"/></linearGradient><radialGradient id="glow"><stop offset="0" stop-color="hsl(295 100% 70% / 0.55)"/><stop offset="1" stop-color="hsl(290 100% 50% / 0)"/></radialGradient><linearGradient id="wax" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="hsl(290 40% 92% / 1)"/><stop offset="1" stop-color="hsl(280 30% 70% / 1)"/></linearGradient><linearGradient id="flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbe6"/><stop offset="0.5" stop-color="#ffc94d"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient><filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#bg)"/>
+        <g filter="url(#blur)"><circle cx="332.4" cy="166.3" r="31.6" fill="hsl(303.86374921537936 90% 70% / 1)" opacity="0.1"/><circle cx="559" cy="308.9" r="23.9" fill="hsl(296.33639064617455 90% 70% / 1)" opacity="0.1"/><circle cx="473.4" cy="42.1" r="13.7" fill="hsl(303.67339162155986 90% 70% / 1)" opacity="0.2"/><circle cx="309.1" cy="96.9" r="37.8" fill="hsl(303.97213405463845 90% 70% / 1)" opacity="0.2"/><circle cx="208.2" cy="295.8" r="16.9" fill="hsl(299.9608684005216 90% 70% / 1)" opacity="0.2"/><circle cx="317.5" cy="4.3" r="14.9" fill="hsl(304.5652186870575 90% 70% / 1)" opacity="0.2"/><circle cx="143.4" cy="346.3" r="26.5" fill="hsl(303.3322180993855 90% 70% / 1)" opacity="0.1"/><circle cx="398.6" cy="247.8" r="14" fill="hsl(298.53211619425565 90% 70% / 1)" opacity="0.1"/><circle cx="569.2" cy="274.5" r="27.9" fill="hsl(305.95893416088074 90% 70% / 1)" opacity="0.2"/><circle cx="268.3" cy="98.6" r="39.3" fill="hsl(293.2767708180472 90% 70% / 1)" opacity="0.2"/><circle cx="589" cy="36.6" r="36.8" fill="hsl(290.1794032147154 90% 70% / 1)" opacity="0.1"/><circle cx="92.4" cy="81.2" r="38.5" fill="hsl(302.2825259156525 90% 70% / 1)" opacity="0.1"/><circle cx="126.6" cy="298.3" r="20.5" fill="hsl(298.4025425603613 90% 70% / 1)" opacity="0.2"/><circle cx="442.6" cy="11.8" r="34.3" fill="hsl(290.4307649191469 90% 70% / 1)" opacity="0.1"/></g>
+        <circle cx="300" cy="250" r="260" fill="url(#glow)"/>
+        <rect x="255" y="290" width="90" height="230" rx="10" fill="url(#wax)"/>
+        <path d="M262,300 q4,40 10,42 q6,-2 6,-42 Z" fill="hsl(290 35% 96% / 1)"/>
+        <line x1="300" y1="290" x2="300" y2="272" stroke="#2a1d14" stroke-width="3"/>
+        <path d="M300,180 C318,215 326,245 300,276 C274,245 282,215 300,180 Z" fill="url(#flame)"/>
+        <ellipse cx="300" cy="530" rx="120" ry="20" fill="hsl(280 30% 22% / 1)"/>
+        <ellipse cx="300" cy="522" rx="90" ry="12" fill="hsl(280 35% 35% / 1)"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+
+</svg>

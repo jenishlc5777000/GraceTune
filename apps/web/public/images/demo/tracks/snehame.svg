@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(290 45% 22% / 1)"/><stop offset="1" stop-color="hsl(310 60% 70% / 1)"/></linearGradient><linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(300 50% 45% / 1)"/><stop offset="1" stop-color="hsl(280 55% 15% / 1)"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/>
+        <circle cx="303.8" cy="135.8" r="34" fill="hsl(320 90% 90% / 1)" opacity="0.9"/>
+        <path d="M0,600 L0,308.1 L100,207.8 L200,315.6 L300,323.2 L400,259.8 L500,288.5 L600,362.7 L600,600 Z" fill="hsl(280 25% 55% / 1)"/>
+        <path d="M0,600 L0,308.7 L75,332.9 L150,371.4 L225,325.4 L300,327.8 L375,279.9 L450,281.9 L525,395.4 L600,380.9 L600,600 Z" fill="hsl(275 30% 35% / 1)"/>
+        <path d="M0,600 L0,369.4 L66.7,404 L133.3,396 L200,366 L266.7,371.7 L333.3,408.6 L400,377.4 L466.7,354 L533.3,401.6 L600,412.7 L600,600 Z" fill="hsl(270 35% 20% / 1)"/>
+        <rect y="400" width="600" height="200" fill="url(#lake)"/>
+        <rect x="120.5" y="430" width="130.1" height="2" fill="#fff" opacity="0.2"/><rect x="320.1" y="448" width="124.1" height="2" fill="#fff" opacity="0.2"/><rect x="186.8" y="466" width="176" height="2" fill="#fff" opacity="0.2"/><rect x="346" y="484" width="216.7" height="2" fill="#fff" opacity="0.3"/><rect x="111.2" y="502" width="80.2" height="2" fill="#fff" opacity="0.3"/><rect x="245.5" y="520" width="125.2" height="2" fill="#fff" opacity="0.2"/><rect x="341.9" y="538" width="107.2" height="2" fill="#fff" opacity="0.3"/><rect x="316.9" y="556" width="216" height="2" fill="#fff" opacity="0.3"/><rect x="289.4" y="574" width="202.1" height="2" fill="#fff" opacity="0.3"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="496" font-size="56" font-weight="600">Snehame</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">KIRUBAI COLLECTIVE</text>
+</svg>

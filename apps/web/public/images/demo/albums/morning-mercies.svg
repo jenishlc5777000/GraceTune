@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(220 45% 22% / 1)"/><stop offset="1" stop-color="hsl(240 60% 70% / 1)"/></linearGradient><linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(230 50% 45% / 1)"/><stop offset="1" stop-color="hsl(210 55% 15% / 1)"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/>
+        <circle cx="300.9" cy="125.4" r="34" fill="hsl(250 90% 90% / 1)" opacity="0.9"/>
+        <path d="M0,600 L0,350.9 L100,320.5 L200,203.3 L300,303.7 L400,298.3 L500,322.5 L600,313.1 L600,600 Z" fill="hsl(210 25% 55% / 1)"/>
+        <path d="M0,600 L0,314.5 L75,303.6 L150,271.9 L225,318.1 L300,282.4 L375,282.1 L450,324 L525,332.6 L600,368.1 L600,600 Z" fill="hsl(205 30% 35% / 1)"/>
+        <path d="M0,600 L0,396.8 L66.7,354.8 L133.3,399.3 L200,389.6 L266.7,358.8 L333.3,356.9 L400,397.4 L466.7,365 L533.3,386.8 L600,350.6 L600,600 Z" fill="hsl(200 35% 20% / 1)"/>
+        <rect y="400" width="600" height="200" fill="url(#lake)"/>
+        <rect x="94.4" y="430" width="198.9" height="2" fill="#fff" opacity="0.2"/><rect x="103.2" y="448" width="144.3" height="2" fill="#fff" opacity="0.3"/><rect x="279.2" y="466" width="144" height="2" fill="#fff" opacity="0.3"/><rect x="82.4" y="484" width="218.8" height="2" fill="#fff" opacity="0.3"/><rect x="266.5" y="502" width="132.5" height="2" fill="#fff" opacity="0.2"/><rect x="176.1" y="520" width="76.1" height="2" fill="#fff" opacity="0.2"/><rect x="285.9" y="538" width="155.6" height="2" fill="#fff" opacity="0.2"/><rect x="144.9" y="556" width="181.8" height="2" fill="#fff" opacity="0.2"/><rect x="251.7" y="574" width="152.4" height="2" fill="#fff" opacity="0.2"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="496" font-size="46" font-weight="600">Morning Mercies</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">SELAH RIVERS</text><text x="40" y="56" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="5" fill="#fff" opacity="0.7">2025</text>
+</svg>

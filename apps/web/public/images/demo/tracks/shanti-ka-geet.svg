@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(205 35% 8% / 1)"/><stop offset="1" stop-color="hsl(185 40% 4% / 1)"/></linearGradient><radialGradient id="glow"><stop offset="0" stop-color="hsl(230 100% 70% / 0.55)"/><stop offset="1" stop-color="hsl(225 100% 50% / 0)"/></radialGradient><linearGradient id="wax" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="hsl(225 40% 92% / 1)"/><stop offset="1" stop-color="hsl(215 30% 70% / 1)"/></linearGradient><linearGradient id="flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbe6"/><stop offset="0.5" stop-color="#ffc94d"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient><filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#bg)"/>
+        <g filter="url(#blur)"><circle cx="32.2" cy="134.2" r="41.2" fill="hsl(236.55455322004855 90% 70% / 1)" opacity="0.2"/><circle cx="13.3" cy="169.2" r="19.8" fill="hsl(234.14024295751005 90% 70% / 1)" opacity="0.2"/><circle cx="58.3" cy="153.1" r="26" fill="hsl(226.53666253201663 90% 70% / 1)" opacity="0.2"/><circle cx="562.6" cy="149.7" r="23.3" fill="hsl(232.7427750453353 90% 70% / 1)" opacity="0.1"/><circle cx="161.2" cy="109" r="24.3" fill="hsl(227.37299048807472 90% 70% / 1)" opacity="0.1"/><circle cx="28.1" cy="327.8" r="35.7" fill="hsl(237.26777988485992 90% 70% / 1)" opacity="0.2"/><circle cx="569.2" cy="276.1" r="26.8" fill="hsl(233.56889240443707 90% 70% / 1)" opacity="0.2"/><circle cx="465.7" cy="299.9" r="25.8" fill="hsl(227.03643060754985 90% 70% / 1)" opacity="0.2"/><circle cx="533.6" cy="227.3" r="40.5" fill="hsl(239.5758422324434 90% 70% / 1)" opacity="0.1"/><circle cx="215.3" cy="358.7" r="28.4" fill="hsl(225.5575198493898 90% 70% / 1)" opacity="0.1"/><circle cx="520.8" cy="295.5" r="16.5" fill="hsl(237.3691563680768 90% 70% / 1)" opacity="0.1"/><circle cx="358" cy="120.2" r="21.8" fill="hsl(233.18771854508668 90% 70% / 1)" opacity="0.2"/><circle cx="477.4" cy="225.1" r="22.6" fill="hsl(241.69253730680794 90% 70% / 1)" opacity="0.2"/><circle cx="144.2" cy="206.4" r="28.3" fill="hsl(241.40453118365258 90% 70% / 1)" opacity="0.2"/></g>
+        <circle cx="300" cy="250" r="260" fill="url(#glow)"/>
+        <rect x="255" y="290" width="90" height="230" rx="10" fill="url(#wax)"/>
+        <path d="M262,300 q4,40 10,42 q6,-2 6,-42 Z" fill="hsl(225 35% 96% / 1)"/>
+        <line x1="300" y1="290" x2="300" y2="272" stroke="#2a1d14" stroke-width="3"/>
+        <path d="M300,180 C318,215 326,245 300,276 C274,245 282,215 300,180 Z" fill="url(#flame)"/>
+        <ellipse cx="300" cy="530" rx="120" ry="20" fill="hsl(215 30% 22% / 1)"/>
+        <ellipse cx="300" cy="522" rx="90" ry="12" fill="hsl(215 35% 35% / 1)"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="496" font-size="46" font-weight="600">Shanti Ka Geet</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">KIRUBAI COLLECTIVE</text>
+</svg>

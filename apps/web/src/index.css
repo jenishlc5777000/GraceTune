@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Theme tokens. Values below are the Midnight Grace defaults for first paint;
+ * src/theme/applyTheme.ts overwrites them from the preset chosen in the admin.
+ */
+:root {
+  --bg: #070b18;
+  --bg-elevated: #0d1326;
+  --surface: rgb(255 255 255 / 0.045);
+  --surface-hover: rgb(255 255 255 / 0.09);
+  --line: rgb(255 255 255 / 0.08);
+  --fg: #eef1fb;
+  --muted: #8d97b5;
+  --accent: #3d5afe;
+  --accent-strong: #1a237e;
+  --highlight: #e9b949;
+  --highlight-strong: #f59e0b;
+  --on-highlight: #0b1020;
+  --hero-from: #1b2559;
+  --hero-to: #0b1020;
+  --glow-a: rgb(61 90 254 / 0.22);
+  --glow-b: rgb(233 185 73 / 0.08);
+  --app-font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --app-font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --app-font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --glass-mix: 72%;
+  --glass-blur: 24px;
+  --cover-filter: none;
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-highlight: var(--highlight);
+  --color-highlight-strong: var(--highlight-strong);
+  --color-on-highlight: var(--on-highlight);
+  --color-hero-from: var(--hero-from);
+  --color-hero-to: var(--hero-to);
+  --color-bg: var(--bg);
+  --color-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --font-sans: var(--app-font-sans);
+  --font-heading: var(--app-font-heading);
+  --font-display: var(--app-font-display);
+}
+
+@theme {
+  --animate-eq: eq 0.9s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes eq {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--app-font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2 {
+  font-family: var(--app-font-heading);
+}
+
+/* Ambient glow behind the whole app */
+.app-glow {
+  background:
+    radial-gradient(60rem 40rem at 10% -10%, var(--glow-a), transparent 60%),
+    radial-gradient(50rem 30rem at 100% 0%, var(--glow-b), transparent 60%);
+}
+
+.glass {
+  background: color-mix(in srgb, var(--bg-elevated) var(--glass-mix), transparent);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.4);
+}
+
+.cover-art {
+  filter: var(--cover-filter);
+}
+
+.scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Range input styled as a slim progress bar */
+.range {
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--fg) 0,
+    var(--fg) var(--pct, 0%),
+    var(--line) var(--pct, 0%)
+  );
+  cursor: pointer;
+}
+.range:hover {
+  background: linear-gradient(
+    to right,
+    var(--highlight) 0,
+    var(--highlight) var(--pct, 0%),
+    var(--line) var(--pct, 0%)
+  );
+}
+.range::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fg);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.range:hover::-webkit-slider-thumb,
+.range:focus-visible::-webkit-slider-thumb {
+  opacity: 1;
+}
+.range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--highlight);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

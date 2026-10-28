@@ -1,0 +1,747 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ──────────────────────────────────────────────────────────────
+
+/// Role-based access. Kept as an enum (not a table) because roles are fixed
+/// and checked in code; permissions per role live in the API's RBAC map.
+enum Role {
+  USER
+  ARTIST
+  ADMIN
+  MODERATOR
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum TrackStatus {
+  DRAFT
+  PROCESSING
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  TAKEN_DOWN
+}
+
+enum PlaylistKind {
+  USER
+  EDITORIAL
+  CHURCH
+  SUNDAY_SETLIST
+  MADE_FOR_YOU
+}
+
+enum SeriesKind {
+  SERMON
+  PODCAST
+}
+
+enum ReviewDecision {
+  APPROVED
+  REJECTED
+}
+
+enum ReportStatus {
+  OPEN
+  REVIEWING
+  RESOLVED
+  DISMISSED
+}
+
+enum ReportReason {
+  COPYRIGHT
+  OFFENSIVE
+  SPAM
+  WRONG_METADATA
+  OTHER
+}
+
+enum TakedownStatus {
+  RECEIVED
+  REVIEWING
+  CONTENT_REMOVED
+  REJECTED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  EXPIRED
+}
+
+enum PaymentProvider {
+  RAZORPAY
+  STRIPE
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+
+enum BillingInterval {
+  MONTH
+  YEAR
+}
+
+enum NotificationType {
+  NEW_RELEASE
+  DAILY_VERSE
+  BROADCAST
+  MODERATION
+  SYSTEM
+}
+
+// ─── Users & auth ───────────────────────────────────────────────────────
+
+model User {
+  id            String       @id @default(cuid())
+  email         String       @unique
+  passwordHash  String?
+  provider      AuthProvider @default(EMAIL)
+  googleId      String?      @unique
+  displayName   String
+  avatarUrl     String?
+  role          Role         @default(USER)
+  status        UserStatus   @default(ACTIVE)
+  locale        String       @default("en")
+  emailVerified Boolean      @default(false)
+  twoFactorSecret String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  artistProfile ArtistProfile?
+  refreshTokens RefreshToken[]
+  playlists     Playlist[]
+  likes         Like[]
+  follows       Follow[]
+  playHistory   PlayHistory[]
+  downloads     Download[]
+  sermonProgress SermonProgress[]
+  subscriptions Subscription[]
+  payments      Payment[]
+  reports       Report[]
+  reviews       ModerationReview[]
+  notifications Notification[]
+  auditLogs     AuditLog[]
+  pushTokens    PushToken[]
+  managedChurches Church[]       @relation("ChurchManagers")
+
+  @@index([role])
+  @@index([status])
+  @@index([createdAt])
+}
+
+/// Hashed refresh tokens; rotated on every refresh. `family` lets us revoke
+/// a whole chain when a reused (stolen) token is detected.
+model RefreshToken {
+  id         String    @id @default(cuid())
+  userId     String
+  tokenHash  String    @unique
+  family     String
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  replacedBy String?
+  userAgent  String?
+  createdAt  DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([family])
+}
+
+model PushToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  platform  String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ─── Artists & churches ─────────────────────────────────────────────────
+
+model ArtistProfile {
+  id                 String             @id @default(cuid())
+  userId             String             @unique
+  slug               String             @unique
+  name               String
+  bio                String?
+  avatarUrl          String?
+  bannerUrl          String?
+  country            String?
+  socialLinks        Json?
+  verification       VerificationStatus @default(PENDING)
+  verifiedAt         DateTime?
+  applicationNote    String?
+  rejectionReason    String?
+  contentPolicyAcceptedAt DateTime?
+  strikeCount        Int                @default(0)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tracks  Track[]
+  albums  Album[]
+  follows Follow[]
+  strikes Strike[]
+
+  @@index([verification])
+  @@index([name])
+}
+
+model Church {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  city        String?
+  country     String?
+  description String?
+  logoUrl     String?
+  createdAt   DateTime @default(now())
+
+  managers  User[]        @relation("ChurchManagers")
+  playlists Playlist[]
+  follows   Follow[]
+  series    SermonSeries[]
+}
+
+// ─── Taxonomy ───────────────────────────────────────────────────────────
+
+model Genre {
+  id        String  @id @default(cuid())
+  slug      String  @unique
+  name      String
+  hue       Int     @default(220)
+  sortOrder Int     @default(0)
+  isActive  Boolean @default(true)
+
+  tracks Track[]
+}
+
+model Mood {
+  id       String  @id @default(cuid())
+  slug     String  @unique
+  name     String
+  hue      Int     @default(220)
+  isActive Boolean @default(true)
+
+  tracks Track[]
+}
+
+model Language {
+  code       String  @id
+  name       String
+  nativeName String
+  isActive   Boolean @default(true)
+
+  tracks  Track[]
+  sermons Sermon[]
+}
+
+// ─── Catalog ────────────────────────────────────────────────────────────
+
+model Album {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  title       String
+  artistId    String
+  coverUrl    String?
+  hue         Int         @default(220)
+  releaseDate DateTime?
+  status      TrackStatus @default(DRAFT)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  artist ArtistProfile @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  tracks Track[]
+  likes  Like[]
+
+  @@index([artistId])
+  @@index([title])
+}
+
+model Track {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  title         String
+  artistId      String
+  albumId       String?
+  genreId       String?
+  languageCode  String?
+  trackNumber   Int?
+  durationSec   Int         @default(0)
+  coverUrl      String?
+  hue           Int         @default(220)
+  explicit      Boolean     @default(false)
+  status        TrackStatus @default(DRAFT)
+  isPremiumOnly Boolean     @default(false)
+
+  /// Object-storage keys. Never returned to clients directly; the player
+  /// module turns them into short-lived signed URLs.
+  originalKey   String?
+  hlsMasterKey  String?
+  waveform      Json?
+
+  // Rights declaration (required before submission)
+  rightsDeclaredById String?
+  rightsDeclaredAt   DateTime?
+  rightsStatement    String?
+  hasLyricRights     Boolean   @default(false)
+
+  playCount   Int       @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  artist      ArtistProfile      @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  album       Album?             @relation(fields: [albumId], references: [id], onDelete: SetNull)
+  genre       Genre?             @relation(fields: [genreId], references: [id], onDelete: SetNull)
+  language    Language?          @relation(fields: [languageCode], references: [code])
+  moods       Mood[]
+  lyrics      Lyrics?
+  verseTags   VerseTag[]
+  playlistItems PlaylistTrack[]
+  likes       Like[]
+  plays       PlayHistory[]
+  downloads   Download[]
+  reviews     ModerationReview[]
+  reports     Report[]
+  takedowns   TakedownRequest[]
+
+  @@index([artistId])
+  @@index([albumId])
+  @@index([genreId])
+  @@index([languageCode])
+  @@index([status, publishedAt])
+  @@index([title])
+}
+
+model Lyrics {
+  id        String   @id @default(cuid())
+  trackId   String   @unique
+  plain     String?
+  /// Array of { timeMs, text } for synced lyrics.
+  synced    Json?
+  updatedAt DateTime @updatedAt
+
+  track Track @relation(fields: [trackId], references: [id], onDelete: Cascade)
+}
+
+model VerseTag {
+  id        String @id @default(cuid())
+  trackId   String
+  reference String
+  text      String?
+
+  track Track @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@index([trackId])
+  @@index([reference])
+}
+
+model DailyVerse {
+  id        String   @id @default(cuid())
+  date      DateTime @unique @db.Date
+  reference String
+  text      String
+}
+
+// ─── Playlists & library ────────────────────────────────────────────────
+
+model Playlist {
+  id          String       @id @default(cuid())
+  slug        String       @unique
+  title       String
+  description String?
+  coverUrl    String?
+  hue         Int          @default(220)
+  kind        PlaylistKind @default(USER)
+  isPublic    Boolean      @default(true)
+  ownerId     String?
+  churchId    String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  owner  User?           @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  church Church?         @relation(fields: [churchId], references: [id], onDelete: SetNull)
+  tracks PlaylistTrack[]
+  likes  Like[]
+
+  @@index([ownerId])
+  @@index([churchId])
+  @@index([kind])
+  @@index([title])
+}
+
+model PlaylistTrack {
+  playlistId String
+  trackId    String
+  /// Fractional ordering so reordering touches one row.
+  position   Float
+  addedAt    DateTime @default(now())
+
+  playlist Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  track    Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@id([playlistId, trackId])
+  @@index([playlistId, position])
+}
+
+/// A user "likes" a track (liked songs) or saves an album / playlist.
+model Like {
+  id         String   @id @default(cuid())
+  userId     String
+  trackId    String?
+  albumId    String?
+  playlistId String?
+  createdAt  DateTime @default(now())
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  track    Track?    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  album    Album?    @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  playlist Playlist? @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, trackId])
+  @@unique([userId, albumId])
+  @@unique([userId, playlistId])
+  @@index([userId, createdAt])
+}
+
+model Follow {
+  id        String   @id @default(cuid())
+  userId    String
+  artistId  String?
+  churchId  String?
+  createdAt DateTime @default(now())
+
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  artist ArtistProfile? @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  church Church?        @relation(fields: [churchId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, artistId])
+  @@unique([userId, churchId])
+  @@index([artistId])
+  @@index([churchId])
+}
+
+model PlayHistory {
+  id          String   @id @default(cuid())
+  userId      String?
+  trackId     String
+  playedAt    DateTime @default(now())
+  msPlayed    Int      @default(0)
+  country     String?
+  device      String?
+
+  user  User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  track Track @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@index([userId, playedAt(sort: Desc)])
+  @@index([trackId, playedAt])
+  @@index([playedAt])
+}
+
+model Download {
+  id         String   @id @default(cuid())
+  userId     String
+  trackId    String
+  deviceId   String
+  quality    Int      @default(128)
+  /// Per-device content key id; the key itself never leaves the KMS / API.
+  keyId      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  track Track @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, trackId, deviceId])
+  @@index([userId])
+}
+
+// ─── Sermons & podcasts ─────────────────────────────────────────────────
+
+model SermonSeries {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  title       String
+  description String?
+  coverUrl    String?
+  hue         Int        @default(280)
+  kind        SeriesKind @default(SERMON)
+  speaker     String?
+  churchId    String?
+  createdAt   DateTime   @default(now())
+
+  church  Church?  @relation(fields: [churchId], references: [id], onDelete: SetNull)
+  sermons Sermon[]
+
+  @@index([churchId])
+  @@index([title])
+}
+
+model Sermon {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  seriesId      String
+  title         String
+  description   String?
+  speaker       String?
+  episodeNumber Int?
+  durationSec   Int         @default(0)
+  languageCode  String?
+  originalKey   String?
+  hlsMasterKey  String?
+  status        TrackStatus @default(DRAFT)
+  publishedAt   DateTime?
+  createdAt     DateTime    @default(now())
+
+  series   SermonSeries     @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  language Language?        @relation(fields: [languageCode], references: [code])
+  progress SermonProgress[]
+
+  @@index([seriesId, episodeNumber])
+  @@index([status, publishedAt])
+}
+
+/// Resume position for sermons / podcast episodes.
+model SermonProgress {
+  userId      String
+  sermonId    String
+  positionSec Int      @default(0)
+  completed   Boolean  @default(false)
+  updatedAt   DateTime @updatedAt
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sermon Sermon @relation(fields: [sermonId], references: [id], onDelete: Cascade)
+
+  @@id([userId, sermonId])
+}
+
+// ─── Subscriptions & payments ───────────────────────────────────────────
+
+model Plan {
+  id            String          @id @default(cuid())
+  code          String          @unique
+  name          String
+  description   String?
+  interval      BillingInterval @default(MONTH)
+  /// Minor units (paise / cents).
+  priceInr      Int
+  priceUsd      Int
+  razorpayPlanId String?
+  stripePriceId  String?
+  features      Json?
+  isActive      Boolean         @default(true)
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id                 String             @id @default(cuid())
+  userId             String
+  planId             String
+  provider           PaymentProvider
+  providerSubId      String             @unique
+  status             SubscriptionStatus @default(ACTIVE)
+  currentPeriodEnd   DateTime
+  cancelAtPeriodEnd  Boolean            @default(false)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan     Plan      @relation(fields: [planId], references: [id])
+  payments Payment[]
+
+  @@index([userId, status])
+  @@index([status, currentPeriodEnd])
+}
+
+model Payment {
+  id                String          @id @default(cuid())
+  userId            String
+  subscriptionId    String?
+  provider          PaymentProvider
+  providerPaymentId String          @unique
+  amount            Int
+  currency          String
+  status            PaymentStatus   @default(PENDING)
+  refundedAmount    Int             @default(0)
+  rawEvent          Json?
+  createdAt         DateTime        @default(now())
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([status, createdAt])
+}
+
+// ─── Trust & safety ─────────────────────────────────────────────────────
+
+model ModerationReview {
+  id         String         @id @default(cuid())
+  trackId    String
+  reviewerId String
+  decision   ReviewDecision
+  reason     String?
+  createdAt  DateTime       @default(now())
+
+  track    Track @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  reviewer User  @relation(fields: [reviewerId], references: [id])
+
+  @@index([trackId])
+  @@index([reviewerId])
+}
+
+model Report {
+  id          String       @id @default(cuid())
+  reporterId  String?
+  trackId     String?
+  reason      ReportReason
+  details     String?
+  status      ReportStatus @default(OPEN)
+  resolvedAt  DateTime?
+  createdAt   DateTime     @default(now())
+
+  reporter User?  @relation(fields: [reporterId], references: [id], onDelete: SetNull)
+  track    Track? @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt])
+  @@index([trackId])
+}
+
+/// Public copyright takedown form submissions (no account required).
+model TakedownRequest {
+  id              String         @id @default(cuid())
+  trackId         String?
+  contentUrl      String
+  claimantName    String
+  claimantEmail   String
+  organization    String?
+  workDescription String
+  statement       String
+  signature       String
+  status          TakedownStatus @default(RECEIVED)
+  adminNote       String?
+  resolvedAt      DateTime?
+  createdAt       DateTime       @default(now())
+
+  track   Track?   @relation(fields: [trackId], references: [id], onDelete: SetNull)
+  strikes Strike[]
+
+  @@index([status, createdAt])
+  @@index([trackId])
+}
+
+model Strike {
+  id         String   @id @default(cuid())
+  artistId   String
+  takedownId String?
+  reason     String
+  expiresAt  DateTime?
+  createdAt  DateTime @default(now())
+
+  artist   ArtistProfile    @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  takedown TakedownRequest? @relation(fields: [takedownId], references: [id], onDelete: SetNull)
+
+  @@index([artistId])
+}
+
+// ─── Notifications, admin & config ──────────────────────────────────────
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String?
+  type      NotificationType
+  title     String
+  body      String
+  data      Json?
+  readAt    DateTime?
+  sentAt    DateTime?
+  createdAt DateTime         @default(now())
+
+  /// Null userId = broadcast.
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String
+  action     String
+  entityType String
+  entityId   String?
+  before     Json?
+  after      Json?
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  actor User @relation(fields: [actorId], references: [id])
+
+  @@index([actorId, createdAt])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+model FeatureFlag {
+  key         String   @id
+  enabled     Boolean  @default(false)
+  description String?
+  updatedAt   DateTime @updatedAt
+}
+
+/// Editable app settings (app name, logo, policy texts) as key/value JSON.
+model AppSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+/// Admin-curated home page sections and banners.
+model FeaturedSection {
+  id         String   @id @default(cuid())
+  title      String
+  kind       String
+  /// Ordered list of { type: "playlist" | "album" | "track" | "artist", id }.
+  items      Json
+  bannerUrl  String?
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  startsAt   DateTime?
+  endsAt     DateTime?
+  updatedAt  DateTime @updatedAt
+
+  @@index([isActive, sortOrder])
+}

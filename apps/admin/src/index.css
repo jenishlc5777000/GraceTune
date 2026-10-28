@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+/*
+ * Admin chrome uses Tailwind's neutral palette. The `t-*` tokens below only
+ * resolve inside a ThemePreview, which scopes a preset's CSS variables.
+ */
+@theme inline {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-t-bg: var(--bg);
+  --color-t-elevated: var(--bg-elevated);
+  --color-t-surface: var(--surface);
+  --color-t-line: var(--line);
+  --color-t-fg: var(--fg);
+  --color-t-muted: var(--muted);
+  --color-t-accent: var(--accent);
+  --color-t-accent-strong: var(--accent-strong);
+  --color-t-highlight: var(--highlight);
+  --color-t-highlight-strong: var(--highlight-strong);
+  --color-t-on-highlight: var(--on-highlight);
+  --color-t-hero-from: var(--hero-from);
+  --color-t-hero-to: var(--hero-to);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: #f6f7f9;
+  color: #0f172a;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0b0d12;
+    color: #e5e7eb;
+  }
+}
+
+.preview-glass {
+  background: color-mix(in srgb, var(--bg-elevated) var(--glass-mix), transparent);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.preview-cover {
+  filter: var(--cover-filter);
+}
+
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}

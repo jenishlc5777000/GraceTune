@@ -1,0 +1,255 @@
+{
+  "genres": [
+    { "slug": "worship", "name": "Worship", "hue": 228 },
+    { "slug": "gospel", "name": "Gospel", "hue": 28 },
+    { "slug": "hymns", "name": "Hymns", "hue": 42 },
+    { "slug": "contemporary", "name": "Contemporary Christian", "hue": 262 },
+    { "slug": "kids", "name": "Kids", "hue": 140 },
+    { "slug": "prayer", "name": "Prayer", "hue": 200 },
+    { "slug": "praise", "name": "Praise", "hue": 340 },
+    { "slug": "choir", "name": "Choir", "hue": 18 },
+    { "slug": "instrumental", "name": "Instrumental", "hue": 178 },
+    { "slug": "sermons", "name": "Sermons", "hue": 290 }
+  ],
+  "moods": [
+    { "slug": "peaceful", "name": "Peaceful", "hue": 190 },
+    { "slug": "joyful", "name": "Joyful", "hue": 48 },
+    { "slug": "reflective", "name": "Reflective", "hue": 250 },
+    { "slug": "uplifting", "name": "Uplifting", "hue": 15 },
+    { "slug": "devotional", "name": "Devotional", "hue": 275 },
+    { "slug": "energetic", "name": "Energetic", "hue": 350 }
+  ],
+  "languages": [
+    { "code": "en", "name": "English", "nativeName": "English" },
+    { "code": "ta", "name": "Tamil", "nativeName": "தமிழ்" },
+    { "code": "hi", "name": "Hindi", "nativeName": "हिन्दी" },
+    { "code": "ml", "name": "Malayalam", "nativeName": "മലയാളം" },
+    { "code": "te", "name": "Telugu", "nativeName": "తెలుగు" }
+  ],
+  "artists": [
+    {
+      "slug": "selah-rivers",
+      "name": "Selah Rivers",
+      "bio": "A worship collective writing quiet, spacious songs for early mornings and late-night prayer.",
+      "country": "US",
+      "hue": 222
+    },
+    {
+      "slug": "cedar-hill-choir",
+      "name": "Cedar Hill Choir",
+      "bio": "Forty voices from a small hillside parish, singing old hymns in new light.",
+      "country": "GB",
+      "hue": 32
+    },
+    {
+      "slug": "kirubai-collective",
+      "name": "Kirubai Collective",
+      "bio": "Musicians from Chennai, Kochi and Hyderabad blending South Indian melody with modern worship.",
+      "country": "IN",
+      "hue": 330
+    }
+  ],
+  "albums": [
+    { "slug": "morning-mercies", "title": "Morning Mercies", "artistSlug": "selah-rivers", "year": 2025, "hue": 210 },
+    { "slug": "open-heaven-sessions", "title": "Open Heaven Sessions", "artistSlug": "selah-rivers", "year": 2026, "hue": 255 },
+    { "slug": "hymns-at-dusk", "title": "Hymns at Dusk", "artistSlug": "cedar-hill-choir", "year": 2024, "hue": 36 },
+    { "slug": "kirubai", "title": "Kirubai", "artistSlug": "kirubai-collective", "year": 2025, "hue": 320 },
+    { "slug": "psalms-of-the-south", "title": "Psalms of the South", "artistSlug": "kirubai-collective", "year": 2026, "hue": 160 }
+  ],
+  "tracks": [
+    {
+      "slug": "morning-mercies", "title": "Morning Mercies", "artistSlug": "selah-rivers", "albumSlug": "morning-mercies",
+      "genreSlug": "worship", "moodSlugs": ["peaceful", "uplifting"], "languageCode": "en", "durationSec": 32, "hue": 205,
+      "music": { "root": 62, "mode": "major", "bpm": 72, "progression": 0, "voice": "pad" },
+      "verse": { "reference": "Lamentations 3:22-23", "text": "His compassions fail not. They are new every morning: great is thy faithfulness." },
+      "lyrics": [
+        { "timeMs": 0, "text": "♪" },
+        { "timeMs": 3000, "text": "Light breaks over the hills again" },
+        { "timeMs": 7000, "text": "Every shadow learns your name" },
+        { "timeMs": 11000, "text": "New mercies waiting at my door" },
+        { "timeMs": 15000, "text": "Faithful now and evermore" },
+        { "timeMs": 19500, "text": "Morning mercies, morning grace" },
+        { "timeMs": 23500, "text": "I will rise and seek your face" },
+        { "timeMs": 28000, "text": "♪" }
+      ]
+    },
+    {
+      "slug": "still-waters", "title": "Still Waters", "artistSlug": "selah-rivers", "albumSlug": "morning-mercies",
+      "genreSlug": "prayer", "moodSlugs": ["peaceful", "reflective"], "languageCode": "en", "durationSec": 34, "hue": 190,
+      "music": { "root": 57, "mode": "major", "bpm": 64, "progression": 1, "voice": "piano" },
+      "verse": { "reference": "Psalm 23:2", "text": "He maketh me to lie down in green pastures: he leadeth me beside the still waters." }
+    },
+    {
+      "slug": "lamp-for-my-path", "title": "Lamp for My Path", "artistSlug": "selah-rivers", "albumSlug": "morning-mercies",
+      "genreSlug": "contemporary", "moodSlugs": ["uplifting"], "languageCode": "en", "durationSec": 30, "hue": 45,
+      "music": { "root": 64, "mode": "major", "bpm": 88, "progression": 2, "voice": "piano" },
+      "verse": { "reference": "Psalm 119:105", "text": "Thy word is a lamp unto my feet, and a light unto my path." },
+      "lyrics": [
+        { "timeMs": 0, "text": "♪" },
+        { "timeMs": 2500, "text": "When the road is long and the night is near" },
+        { "timeMs": 6500, "text": "Your word is the lamp that keeps me here" },
+        { "timeMs": 11000, "text": "Step by step, I'm walking on" },
+        { "timeMs": 15000, "text": "Till the dark gives way to dawn" },
+        { "timeMs": 20000, "text": "Lamp for my path, light for my way" },
+        { "timeMs": 25000, "text": "♪" }
+      ]
+    },
+    {
+      "slug": "quiet-altar", "title": "Quiet Altar", "artistSlug": "selah-rivers", "albumSlug": "morning-mercies",
+      "genreSlug": "instrumental", "moodSlugs": ["devotional", "reflective"], "languageCode": "en", "durationSec": 36, "hue": 265,
+      "music": { "root": 55, "mode": "minor", "bpm": 60, "progression": 3, "voice": "pad" }
+    },
+    {
+      "slug": "overflow", "title": "Overflow", "artistSlug": "selah-rivers", "albumSlug": "open-heaven-sessions",
+      "genreSlug": "praise", "moodSlugs": ["joyful", "energetic"], "languageCode": "en", "durationSec": 30, "hue": 350,
+      "music": { "root": 65, "mode": "major", "bpm": 112, "progression": 2, "voice": "bell" },
+      "verse": { "reference": "Psalm 23:5", "text": "Thou anointest my head with oil; my cup runneth over." }
+    },
+    {
+      "slug": "open-heaven", "title": "Open Heaven", "artistSlug": "selah-rivers", "albumSlug": "open-heaven-sessions",
+      "genreSlug": "worship", "moodSlugs": ["uplifting", "devotional"], "languageCode": "en", "durationSec": 34, "hue": 240,
+      "music": { "root": 60, "mode": "major", "bpm": 76, "progression": 0, "voice": "pad" }
+    },
+    {
+      "slug": "daybreak-psalm", "title": "Daybreak Psalm", "artistSlug": "selah-rivers", "albumSlug": "open-heaven-sessions",
+      "genreSlug": "contemporary", "moodSlugs": ["joyful", "uplifting"], "languageCode": "en", "durationSec": 30, "hue": 25,
+      "music": { "root": 67, "mode": "major", "bpm": 96, "progression": 1, "voice": "piano" },
+      "verse": { "reference": "Psalm 5:3", "text": "My voice shalt thou hear in the morning, O Lord." }
+    },
+    {
+      "slug": "unshaken", "title": "Unshaken", "artistSlug": "selah-rivers", "albumSlug": "open-heaven-sessions",
+      "genreSlug": "worship", "moodSlugs": ["uplifting"], "languageCode": "en", "durationSec": 32, "hue": 215,
+      "music": { "root": 59, "mode": "minor", "bpm": 80, "progression": 4, "voice": "pad" },
+      "verse": { "reference": "Psalm 62:6", "text": "He only is my rock and my salvation: he is my defence; I shall not be moved." }
+    },
+    {
+      "slug": "anchor-hymn", "title": "Anchor Hymn", "artistSlug": "cedar-hill-choir", "albumSlug": "hymns-at-dusk",
+      "genreSlug": "hymns", "moodSlugs": ["reflective", "devotional"], "languageCode": "en", "durationSec": 36, "hue": 30,
+      "music": { "root": 60, "mode": "major", "bpm": 66, "progression": 5, "voice": "choir" },
+      "verse": { "reference": "Hebrews 6:19", "text": "Which hope we have as an anchor of the soul, both sure and stedfast." },
+      "lyrics": [
+        { "timeMs": 0, "text": "♪" },
+        { "timeMs": 4000, "text": "When tempests rise and waters roar" },
+        { "timeMs": 9000, "text": "My hope is fixed upon the shore" },
+        { "timeMs": 14000, "text": "Though every sail be torn and worn" },
+        { "timeMs": 19000, "text": "This anchor holds through every storm" },
+        { "timeMs": 25000, "text": "Hold fast, my soul, hold fast" },
+        { "timeMs": 31000, "text": "♪" }
+      ]
+    },
+    {
+      "slug": "sunday-bells", "title": "Sunday Bells", "artistSlug": "cedar-hill-choir", "albumSlug": "hymns-at-dusk",
+      "genreSlug": "choir", "moodSlugs": ["joyful", "peaceful"], "languageCode": "en", "durationSec": 32, "hue": 48,
+      "music": { "root": 64, "mode": "major", "bpm": 84, "progression": 5, "voice": "bell" }
+    },
+    {
+      "slug": "evening-vespers", "title": "Evening Vespers", "artistSlug": "cedar-hill-choir", "albumSlug": "hymns-at-dusk",
+      "genreSlug": "choir", "moodSlugs": ["reflective", "peaceful"], "languageCode": "en", "durationSec": 36, "hue": 20,
+      "music": { "root": 57, "mode": "minor", "bpm": 58, "progression": 3, "voice": "choir" },
+      "verse": { "reference": "Psalm 141:2", "text": "Let my prayer be set forth before thee as incense; and the lifting up of my hands as the evening sacrifice." }
+    },
+    {
+      "slug": "thankful-hearts", "title": "Thankful Hearts", "artistSlug": "cedar-hill-choir", "albumSlug": "hymns-at-dusk",
+      "genreSlug": "hymns", "moodSlugs": ["joyful"], "languageCode": "en", "durationSec": 30, "hue": 55,
+      "music": { "root": 62, "mode": "major", "bpm": 92, "progression": 0, "voice": "choir" },
+      "verse": { "reference": "Psalm 100:4", "text": "Enter into his gates with thanksgiving, and into his courts with praise." }
+    },
+    {
+      "slug": "shepherds-lullaby", "title": "Shepherd's Lullaby", "artistSlug": "cedar-hill-choir", "albumSlug": "hymns-at-dusk",
+      "genreSlug": "kids", "moodSlugs": ["peaceful"], "languageCode": "en", "durationSec": 30, "hue": 150,
+      "music": { "root": 67, "mode": "major", "bpm": 70, "progression": 1, "voice": "bell" },
+      "verse": { "reference": "Psalm 4:8", "text": "I will both lay me down in peace, and sleep: for thou, Lord, only makest me dwell in safety." }
+    },
+    {
+      "slug": "kaalai-thuthi", "title": "Kaalai Thuthi", "artistSlug": "kirubai-collective", "albumSlug": "kirubai",
+      "genreSlug": "worship", "moodSlugs": ["devotional", "peaceful"], "languageCode": "ta", "durationSec": 34, "hue": 320,
+      "music": { "root": 62, "mode": "minor", "bpm": 74, "progression": 4, "voice": "piano" },
+      "verse": { "reference": "Psalm 59:16", "text": "I will sing aloud of thy mercy in the morning." }
+    },
+    {
+      "slug": "kirubai-mazhai", "title": "Kirubai Mazhai", "artistSlug": "kirubai-collective", "albumSlug": "kirubai",
+      "genreSlug": "praise", "moodSlugs": ["joyful", "energetic"], "languageCode": "ta", "durationSec": 30, "hue": 5,
+      "music": { "root": 64, "mode": "major", "bpm": 118, "progression": 2, "voice": "bell" }
+    },
+    {
+      "slug": "prabhu-ki-roshni", "title": "Prabhu Ki Roshni", "artistSlug": "kirubai-collective", "albumSlug": "kirubai",
+      "genreSlug": "gospel", "moodSlugs": ["uplifting", "joyful"], "languageCode": "hi", "durationSec": 32, "hue": 38,
+      "music": { "root": 60, "mode": "major", "bpm": 100, "progression": 0, "voice": "piano" },
+      "verse": { "reference": "John 8:12", "text": "I am the light of the world: he that followeth me shall not walk in darkness." }
+    },
+    {
+      "slug": "shanti-ka-geet", "title": "Shanti Ka Geet", "artistSlug": "kirubai-collective", "albumSlug": "kirubai",
+      "genreSlug": "prayer", "moodSlugs": ["peaceful", "reflective"], "languageCode": "hi", "durationSec": 36, "hue": 185,
+      "music": { "root": 55, "mode": "major", "bpm": 62, "progression": 1, "voice": "pad" },
+      "verse": { "reference": "John 14:27", "text": "Peace I leave with you, my peace I give unto you." }
+    },
+    {
+      "slug": "snehame", "title": "Snehame", "artistSlug": "kirubai-collective", "albumSlug": "psalms-of-the-south",
+      "genreSlug": "contemporary", "moodSlugs": ["devotional", "uplifting"], "languageCode": "ml", "durationSec": 32, "hue": 280,
+      "music": { "root": 61, "mode": "minor", "bpm": 82, "progression": 3, "voice": "piano" },
+      "verse": { "reference": "1 John 4:8", "text": "He that loveth not knoweth not God; for God is love." }
+    },
+    {
+      "slug": "stuthi-paadedanu", "title": "Stuthi Paadedanu", "artistSlug": "kirubai-collective", "albumSlug": "psalms-of-the-south",
+      "genreSlug": "praise", "moodSlugs": ["energetic", "joyful"], "languageCode": "te", "durationSec": 30, "hue": 120,
+      "music": { "root": 66, "mode": "major", "bpm": 124, "progression": 2, "voice": "bell" }
+    },
+    {
+      "slug": "river-of-peace", "title": "River of Peace", "artistSlug": "kirubai-collective", "albumSlug": "psalms-of-the-south",
+      "genreSlug": "instrumental", "moodSlugs": ["peaceful"], "languageCode": "en", "durationSec": 36, "hue": 172,
+      "music": { "root": 58, "mode": "major", "bpm": 60, "progression": 1, "voice": "pad" },
+      "verse": { "reference": "Isaiah 66:12", "text": "Behold, I will extend peace to her like a river." }
+    }
+  ],
+  "playlists": [
+    {
+      "slug": "sunrise-worship", "title": "Sunrise Worship", "kind": "EDITORIAL", "hue": 30,
+      "description": "Gentle songs to begin the day in His presence.",
+      "trackSlugs": ["morning-mercies", "daybreak-psalm", "kaalai-thuthi", "lamp-for-my-path", "still-waters", "open-heaven"]
+    },
+    {
+      "slug": "deep-prayer", "title": "Deep Prayer", "kind": "EDITORIAL", "hue": 250,
+      "description": "Instrumental and soaking worship for quiet time.",
+      "trackSlugs": ["quiet-altar", "river-of-peace", "still-waters", "shanti-ka-geet", "evening-vespers"]
+    },
+    {
+      "slug": "joyful-noise", "title": "Joyful Noise", "kind": "EDITORIAL", "hue": 345,
+      "description": "Upbeat praise for the drive, the kitchen and everything in between.",
+      "trackSlugs": ["overflow", "kirubai-mazhai", "stuthi-paadedanu", "prabhu-ki-roshni", "thankful-hearts", "daybreak-psalm"]
+    },
+    {
+      "slug": "timeless-hymns", "title": "Timeless Hymns", "kind": "EDITORIAL", "hue": 40,
+      "description": "Choirs and hymns that have carried the church for generations.",
+      "trackSlugs": ["anchor-hymn", "sunday-bells", "evening-vespers", "thankful-hearts"]
+    },
+    {
+      "slug": "south-indian-worship", "title": "South Indian Worship", "kind": "EDITORIAL", "hue": 320,
+      "description": "Tamil, Malayalam and Telugu worship from Kirubai Collective.",
+      "trackSlugs": ["kaalai-thuthi", "kirubai-mazhai", "snehame", "stuthi-paadedanu"]
+    },
+    {
+      "slug": "sunday-setlist", "title": "Sunday Setlist", "kind": "SUNDAY_SETLIST", "hue": 210,
+      "description": "This week's setlist from Grace Community Church.",
+      "trackSlugs": ["thankful-hearts", "overflow", "unshaken", "open-heaven", "anchor-hymn"]
+    },
+    {
+      "slug": "kids-bedtime", "title": "Kids Bedtime", "kind": "EDITORIAL", "hue": 150,
+      "description": "Soft lullabies and promises for little ones.",
+      "trackSlugs": ["shepherds-lullaby", "still-waters", "river-of-peace"]
+    },
+    {
+      "slug": "daily-mix", "title": "Your Daily Mix", "kind": "MADE_FOR_YOU", "hue": 270,
+      "description": "Picked for you based on what you've been listening to.",
+      "trackSlugs": ["unshaken", "snehame", "morning-mercies", "quiet-altar", "prabhu-ki-roshni", "sunday-bells"]
+    }
+  ],
+  "dailyVerses": [
+    { "reference": "Isaiah 40:31", "text": "They that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles." },
+    { "reference": "Philippians 4:13", "text": "I can do all things through Christ which strengtheneth me." },
+    { "reference": "Psalm 46:10", "text": "Be still, and know that I am God." },
+    { "reference": "Joshua 1:9", "text": "Be strong and of a good courage; be not afraid, for the Lord thy God is with thee whithersoever thou goest." },
+    { "reference": "Matthew 11:28", "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest." },
+    { "reference": "Proverbs 3:5", "text": "Trust in the Lord with all thine heart; and lean not unto thine own understanding." },
+    { "reference": "Romans 8:28", "text": "All things work together for good to them that love God." }
+  ]
+}

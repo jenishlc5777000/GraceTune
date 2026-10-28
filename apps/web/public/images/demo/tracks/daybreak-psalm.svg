@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(35 45% 22% / 1)"/><stop offset="1" stop-color="hsl(55 60% 70% / 1)"/></linearGradient><linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(45 50% 45% / 1)"/><stop offset="1" stop-color="hsl(25 55% 15% / 1)"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/>
+        <circle cx="342.1" cy="160.5" r="34" fill="hsl(65 90% 90% / 1)" opacity="0.9"/>
+        <path d="M0,600 L0,335.3 L100,300.2 L200,214.3 L300,227.3 L400,315.4 L500,339.9 L600,286.2 L600,600 Z" fill="hsl(25 25% 55% / 1)"/>
+        <path d="M0,600 L0,375.9 L75,269.1 L150,372.5 L225,300.2 L300,303.2 L375,261.3 L450,325.2 L525,384.4 L600,303.6 L600,600 Z" fill="hsl(20 30% 35% / 1)"/>
+        <path d="M0,600 L0,368.5 L66.7,361.9 L133.3,411.6 L200,380.9 L266.7,362 L333.3,375.3 L400,357.5 L466.7,401.8 L533.3,385 L600,411.4 L600,600 Z" fill="hsl(15 35% 20% / 1)"/>
+        <rect y="400" width="600" height="200" fill="url(#lake)"/>
+        <rect x="232.2" y="430" width="188.8" height="2" fill="#fff" opacity="0.2"/><rect x="306.1" y="448" width="82.7" height="2" fill="#fff" opacity="0.3"/><rect x="155.5" y="466" width="113.2" height="2" fill="#fff" opacity="0.2"/><rect x="204.9" y="484" width="212.4" height="2" fill="#fff" opacity="0.3"/><rect x="184.7" y="502" width="182.9" height="2" fill="#fff" opacity="0.2"/><rect x="234.5" y="520" width="177.9" height="2" fill="#fff" opacity="0.2"/><rect x="213.4" y="538" width="107.6" height="2" fill="#fff" opacity="0.3"/><rect x="200.1" y="556" width="202.2" height="2" fill="#fff" opacity="0.3"/><rect x="258.5" y="574" width="79" height="2" fill="#fff" opacity="0.2"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="496" font-size="46" font-weight="600">Daybreak Psalm</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">SELAH RIVERS</text>
+</svg>

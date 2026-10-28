@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(215 55% 16% / 1)"/><stop offset="0.55" stop-color="hsl(240 70% 45% / 1)"/><stop offset="1" stop-color="hsl(260 90% 72% / 1)"/></linearGradient><radialGradient id="sun"><stop offset="0" stop-color="hsl(270 100% 92% / 1)"/><stop offset="0.6" stop-color="hsl(260 95% 70% / 1)"/><stop offset="1" stop-color="hsl(255 95% 65% / 0)"/></radialGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/><path d="M300,335.8 L-399.4,363.8 L-399.4,307.8 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L-385.8,195.6 L-372.4,141.2 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L-332.3,35.5 L-306.3,-14.1 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L-242.1,-107.1 L-205,-149 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L-120.4,-224 L-74.3,-255.8 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L25.8,-308.3 L78.1,-328.2 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L187.9,-355.2 L243.5,-362 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L356.5,-362 L412.1,-355.2 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L521.9,-328.2 L574.2,-308.3 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L674.3,-255.8 L720.4,-224 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L805,-149 L842.1,-107.1 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L906.3,-14.1 L932.3,35.5 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L972.4,141.2 L985.8,195.6 Z" fill="#fff" opacity="0.07"/><path d="M300,335.8 L999.4,307.8 L999.4,363.8 Z" fill="#fff" opacity="0.07"/>
+        <circle cx="300" cy="335.8" r="230" fill="url(#sun)" opacity="0.55"/>
+        <circle cx="300" cy="335.8" r="95" fill="hsl(265 100% 88% / 1)"/>
+        <path d="M0,600 L0,375.1 Q0,375.1 75,392.4 Q150,409.7 225,400.9 Q300,392.2 375,401.1 Q450,410 525,416.9 L600,423.8 L600,600 Z" fill="hsl(200 35% 32% / 1)"/>
+        <path d="M0,600 L0,460 Q0,460 60,452.3 Q120,444.6 180,447.7 Q240,450.9 300,447.6 Q360,444.2 420,434.8 Q480,425.3 540,435.8 L600,446.3 L600,600 Z" fill="hsl(195 38% 21% / 1)"/>
+        <path d="M0,600 L0,501.2 Q0,501.2 50,497 Q100,492.9 150,510.6 Q200,528.3 250,518.6 Q300,508.9 350,507.1 Q400,505.2 450,499.6 Q500,494 550,504.7 L600,515.4 L600,600 Z" fill="hsl(190 40% 11% / 1)"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="496" font-size="56" font-weight="600">Unshaken</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">SELAH RIVERS</text>
+</svg>

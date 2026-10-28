@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(295 85% 82% / 1)"/><stop offset="0.5" stop-color="hsl(270 75% 58% / 1)"/><stop offset="1" stop-color="hsl(255 65% 30% / 1)"/></linearGradient><filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/>
+        <circle cx="300" cy="40" r="140" fill="#fff" opacity="0.55" filter="url(#soft)"/>
+        <polygon points="300,-40 -90.9,600 -11,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 24.4,600 72.9,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 132.8,600 178.7,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 206.1,600 252.8,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 329.3,600 418.2,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 415.5,600 504.3,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 510.4,600 584.6,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 601.8,600 652.9,600" fill="#fff" opacity="0.1"/><polygon points="300,-40 705.4,600 786,600" fill="#fff" opacity="0.1"/>
+        <g fill="#fff" opacity="0.75" filter="url(#soft)"><circle cx="172.2" cy="240.4" r="63"/><circle cx="118.2" cy="253.9" r="45"/><circle cx="226.2" cy="256.6" r="49.5"/><circle cx="73.2" cy="271.9" r="31.5"/><circle cx="271.2" cy="274.6" r="34.2"/><circle cx="462.3" cy="312" r="77"/><circle cx="396.3" cy="328.5" r="55"/><circle cx="528.3" cy="331.8" r="60.5"/><circle cx="341.3" cy="350.5" r="38.5"/><circle cx="583.3" cy="353.8" r="41.8"/></g>
+        <g fill="hsl(285 50% 92% / 1)" opacity="0.55"><circle cx="260" cy="470" r="112"/><circle cx="164" cy="494" r="80"/><circle cx="356" cy="498.8" r="88"/><circle cx="84" cy="526" r="56"/><circle cx="436" cy="530.8" r="60.8"/></g>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+<rect width="600" height="600" fill="url(#shade)"/>
+      <g font-family="Georgia, 'Times New Roman', serif" fill="#fff">
+        <text x="40" y="437.2" font-size="56" font-weight="600">Open Heaven</text><text x="40" y="496" font-size="56" font-weight="600">Sessions</text>
+      </g>
+      <text x="42" y="564" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="4" fill="#fff" opacity="0.82">SELAH RIVERS</text><text x="40" y="56" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="5" fill="#fff" opacity="0.7">2026</text>
+</svg>

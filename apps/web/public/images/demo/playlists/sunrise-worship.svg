@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(30 55% 16% / 1)"/><stop offset="0.55" stop-color="hsl(55 70% 45% / 1)"/><stop offset="1" stop-color="hsl(75 90% 72% / 1)"/></linearGradient><radialGradient id="sun"><stop offset="0" stop-color="hsl(85 100% 92% / 1)"/><stop offset="0.6" stop-color="hsl(75 95% 70% / 1)"/><stop offset="1" stop-color="hsl(70 95% 65% / 0)"/></radialGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <radialGradient id="vignette" cx="0.5" cy="0.45" r="0.75"><stop offset="0.6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.45"/></radialGradient>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.72"/></linearGradient></defs>
+<rect width="600" height="600" fill="url(#sky)"/><path d="M300,334.8 L-399.4,362.8 L-399.4,306.8 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L-385.8,194.6 L-372.4,140.2 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L-332.3,34.5 L-306.3,-15 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L-242.1,-108.1 L-205,-150 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L-120.4,-224.9 L-74.3,-256.7 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L25.8,-309.3 L78.1,-329.1 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L187.9,-356.2 L243.5,-362.9 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L356.5,-362.9 L412.1,-356.2 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L521.9,-329.1 L574.2,-309.3 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L674.3,-256.7 L720.4,-224.9 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L805,-150 L842.1,-108.1 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L906.3,-15 L932.3,34.5 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L972.4,140.2 L985.8,194.6 Z" fill="#fff" opacity="0.07"/><path d="M300,334.8 L999.4,306.8 L999.4,362.8 Z" fill="#fff" opacity="0.07"/>
+        <circle cx="300" cy="334.8" r="230" fill="url(#sun)" opacity="0.55"/>
+        <circle cx="300" cy="334.8" r="102.6" fill="hsl(80 100% 88% / 1)"/>
+        <path d="M0,600 L0,405.7 Q0,405.7 75,417.8 Q150,429.9 225,406.8 Q300,383.7 375,383.1 Q450,382.4 525,402.2 L600,421.9 L600,600 Z" fill="hsl(15 35% 32% / 1)"/>
+        <path d="M0,600 L0,457.7 Q0,457.7 60,448.1 Q120,438.4 180,435.6 Q240,432.7 300,434.2 Q360,435.6 420,450 Q480,464.3 540,466.2 L600,468.1 L600,600 Z" fill="hsl(10 38% 21% / 1)"/>
+        <path d="M0,600 L0,495 Q0,495 50,500.7 Q100,506.4 150,507.4 Q200,508.4 250,499.9 Q300,491.3 350,502.1 Q400,512.9 450,521.6 Q500,530.4 550,514.7 L600,499 L600,600 Z" fill="hsl(5 40% 11% / 1)"/>
+<rect width="600" height="600" filter="url(#grain)" opacity="0.09"/>
+<rect width="600" height="600" fill="url(#vignette)"/>
+
+</svg>
